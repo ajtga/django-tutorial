@@ -18,13 +18,9 @@ class IndexView(generic.ListView):
         return Question.objects.order_by('-publication_date')[:5]
 
 
-def detail(request, question_id):
-    # try:
-    #    question = Question.objects.get(pk=question_id)
-    # except Question.DoesNotExist:
-    #    raise Http404("Question does not exist")
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/details.html', {'question': question})
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'polls/details.html'
 
 
 def results(request, question_id):
