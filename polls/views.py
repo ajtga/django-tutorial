@@ -29,7 +29,7 @@ class DetailView(generic.DetailView):
         """
         Excludes any questions that aren't published yet.
         """
-        return Question.objects.filter(publication_date_lte=timezone.now())
+        return Question.objects.filter(publication_date__lte=timezone.now())
 
 
 class ResultsView(generic.DetailView):
